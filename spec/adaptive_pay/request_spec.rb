@@ -161,6 +161,18 @@ describe AdaptivePay::Request do
       }
     end
 
+    it "should escape attributes containing '&'" do
+      class MyClass12 < AdaptivePay::Request
+        attribute "foo"
+      end
+
+      obj = MyClass12.new
+      obj.foo = "b&r"
+      decompose(obj.serialize).should == {
+        "foo" => "b%26r"
+      }
+    end
+
   end
 
 end

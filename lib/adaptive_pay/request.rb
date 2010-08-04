@@ -71,7 +71,11 @@ module AdaptivePay
     def serialize
       result = []
       all_attributes.each do |k, v|
-        result << "#{k}=#{URI.escape(v.to_s)}"
+        # the optional second param to URI.escape defaults to URI::UNSAFE
+        # which doesn't match '&' as it is a valid URI character.
+        # however, '&' is not a valid character within NVP values.
+        escaped_v = URI.escape(v.to_s, /[^-_.!~*'()a-zA-Z\d;\/?:@+$#,\[\]]/n)
+        result << "#{k}=#{escaped_v}"
       end
       result.join("&")
     end
