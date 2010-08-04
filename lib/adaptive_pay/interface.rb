@@ -33,11 +33,11 @@ module AdaptivePay
       config = YAML.load(ERB.new(File.read(File.join(Rails.root, "config/adaptive_pay.yml"))).result)[rails_env.to_s]
       if config["retain_requests_for_test"] == true
         @retain_requests_for_test = true
-      else
-        set_environment config.delete("environment")
-        config.each do |k, v|
-          send "#{k}=", v
-        end
+      end
+
+      set_environment config.delete("environment")
+      config.each do |k, v|
+        send "#{k}=", v
       end
     end
 
