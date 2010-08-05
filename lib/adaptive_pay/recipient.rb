@@ -1,7 +1,7 @@
 module AdaptivePay
   class Recipient
 
-    attr_accessor :email, :amount, :primary
+    attr_accessor :email, :amount, :primary, :invoice_id
 
     def initialize(options={})
       options.each do |k, v|

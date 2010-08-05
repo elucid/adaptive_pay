@@ -39,6 +39,7 @@ module AdaptivePay
           result["receiverList.receiver(#{i}).email"] = r.email
           result["receiverList.receiver(#{i}).amount"] = sprintf "%.2f", r.amount
           result["receiverList.receiver(#{i}).primary"] = r.primary?
+          result["receiverList.receiver(#{i}).invoiceId"] = r.invoice_id if r.invoice_id
         end
         super.merge(result)
       end

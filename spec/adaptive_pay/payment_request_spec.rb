@@ -11,7 +11,7 @@ describe AdaptivePay::PaymentRequest do
     it "should include recipient details in serialization" do
       request = AdaptivePay::PaymentRequest.new
       request.add_recipient :email => "acc@paypal.com", :amount => 100
-      request.add_recipient :email => "primary@paypal.com", :amount => 10, :primary => true
+      request.add_recipient :email => "primary@paypal.com", :amount => 10, :primary => true, :invoice_id => 1234
       decompose(request.serialize).should == {
         "receiverList.receiver(0).email" => "acc@paypal.com",
         "receiverList.receiver(0).amount" => "100.00",
@@ -19,6 +19,7 @@ describe AdaptivePay::PaymentRequest do
         "receiverList.receiver(1).email" => "primary@paypal.com",
         "receiverList.receiver(1).amount" => "10.00",
         "receiverList.receiver(1).primary" => "true",
+        "receiverList.receiver(1).invoiceId" => "1234",
         "actionType" => "PAY",
         "requestEnvelope.errorLanguage" => "en_US"
       }
