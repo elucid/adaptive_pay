@@ -36,10 +36,22 @@ describe AdaptivePay::Response do
   end
 
   it "should provide access to raw response" do
-    body = "responseEnvelope.ack=Scucess"
+    body = "responseEnvelope.ack=Success"
     response = AdaptivePay::Response.new @iface, :other, mock(:response, :body => body, :code => "200")
     response.should respond_to(:raw)
     response.raw.should == body
+  end
+
+  it "should return nil for #read_attribute on missing attribute" do
+    body = "responseEnvelope.ack=Success"
+    response = AdaptivePay::Response.new @iface, :other, mock(:response, :body => body, :code => "200")
+    response.read_attribute("foo").should be_nil
+  end
+
+  it "should return nil for #read_attribute on missing nested attribute" do
+    body = "responseEnvelope.ack=Success"
+    response = AdaptivePay::Response.new @iface, :other, mock(:response, :body => body, :code => "200")
+    response.read_attribute("foo.bar").should be_nil
   end
 
   describe "payment_page_url" do

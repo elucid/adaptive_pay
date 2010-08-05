@@ -43,7 +43,9 @@ module AdaptivePay
     end
 
     def read_attribute(name)
-      name.split('.').inject(@attributes) {|a,n| a[n] || {}}
+      names = name.split('.')
+      names, last_name = names[0..-2], names.last
+      names.inject(@attributes) {|a,n| a[n] || {}}[last_name]
     end
 
     def method_missing(name, *args)
