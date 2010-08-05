@@ -43,7 +43,7 @@ module AdaptivePay
     end
 
     def read_attribute(name)
-      @attributes[name]
+      name.split('.').inject(@attributes) {|a,n| a[n] || {}}
     end
 
     def method_missing(name, *args)
@@ -61,10 +61,7 @@ module AdaptivePay
           return
         end
 
-        response.body.to_s.split("&").each do |fragment|
-          k, v = fragment.split("=")
-          @attributes[k] = URI.unescape(v)
-        end
+        @attributes = Parser.parse(response.body)
 
         @success = %w{Success SuccessWithWarning}.include?(read_attribute("responseEnvelope.ack"))
       end
