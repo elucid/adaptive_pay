@@ -32,6 +32,10 @@ module AdaptivePay
       payment_exec_status == "COMPLETED"
     end
 
+    def errors
+      read_attribute("error")
+    end
+
 
     def payment_page_url
       case @type

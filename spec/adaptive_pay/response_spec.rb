@@ -54,6 +54,20 @@ describe AdaptivePay::Response do
     response.read_attribute("foo.bar").should be_nil
   end
 
+  it "should return nil for #errors on successful response" do
+    body = "responseEnvelope.ack=Success"
+    response = AdaptivePay::Response.new @iface, :other, mock(:response, :body => body, :code => "200")
+    response.should respond_to(:errors)
+    response.errors.should be_nil
+  end
+
+  it "should provide access to response errors on failed resonse" do
+    body = "responseEnvelope.ack=Failure&error(0).errorId=569042&error(0).domain=PLATFORM&error(0).severity=Error"
+    response = AdaptivePay::Response.new @iface, :other, mock(:response, :body => body, :code => "200")
+    response.should respond_to(:errors)
+    response.errors.should == [{"errorId" => "569042", "severity" => "Error", "domain" => "PLATFORM"}]
+  end
+
   describe "payment_page_url" do
 
     it "should build a payment_page_url for approval" do
