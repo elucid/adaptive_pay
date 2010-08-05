@@ -1,10 +1,13 @@
 module AdaptivePay
   class Response
 
+    attr_reader :raw
+
     def initialize(interface, type, response)
       @type = type
       @base_page_url = interface.base_page_url
       @attributes = {}
+      @raw = response.body
       parse response
     end
 

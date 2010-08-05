@@ -35,6 +35,13 @@ describe AdaptivePay::Response do
     response.should_not be_success
   end
 
+  it "should provide access to raw response" do
+    body = "responseEnvelope.ack=Scucess"
+    response = AdaptivePay::Response.new @iface, :other, mock(:response, :body => body, :code => "200")
+    response.should respond_to(:raw)
+    response.raw.should == body
+  end
+
   describe "payment_page_url" do
 
     it "should build a payment_page_url for approval" do
