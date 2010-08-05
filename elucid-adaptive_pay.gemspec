@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{adaptive_pay}
-  s.version = "0.1.1"
+  s.name = %q{elucid-adaptive_pay}
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Frederik Fix"]
-  s.date = %q{2009-11-23}
+  s.authors = ["Frederik Fix", "Justin Giancola"]
+  s.date = %q{2010-08-05}
   s.description = %q{Wrapper around the Paypal Adaptive Payments API}
-  s.email = %q{ich@derfred.com}
+  s.email = %q{elucid@gmail.com}
   s.extra_rdoc_files = [
     "README"
   ]
@@ -21,8 +21,8 @@ Gem::Specification.new do |s|
      "README",
      "Rakefile",
      "VERSION",
-     "adaptive_pay.gemspec",
      "config/adaptive_pay.yml",
+     "elucid-adaptive_pay.gemspec",
      "init.rb",
      "install.rb",
      "lib/adaptive_pay.rb",
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
      "lib/adaptive_pay/callback.rb",
      "lib/adaptive_pay/cancel_preapproval_request.rb",
      "lib/adaptive_pay/interface.rb",
+     "lib/adaptive_pay/parser.rb",
      "lib/adaptive_pay/payment_request.rb",
      "lib/adaptive_pay/preapproval_request.rb",
      "lib/adaptive_pay/recipient.rb",
@@ -41,6 +42,7 @@ Gem::Specification.new do |s|
      "spec/adaptive_pay/callback_spec.rb",
      "spec/adaptive_pay/cancel_preapproval_request_spec.rb",
      "spec/adaptive_pay/interface_spec.rb",
+     "spec/adaptive_pay/parser_spec.rb",
      "spec/adaptive_pay/payment_request_spec.rb",
      "spec/adaptive_pay/preapproval_request_spec.rb",
      "spec/adaptive_pay/recipient_spec.rb",
@@ -53,7 +55,7 @@ Gem::Specification.new do |s|
      "spec/spec_helper.rb",
      "uninstall.rb"
   ]
-  s.homepage = %q{http://github.com/derfred/adaptive_pay}
+  s.homepage = %q{http://github.com/elucid/adaptive_pay}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
@@ -63,6 +65,7 @@ Gem::Specification.new do |s|
      "spec/adaptive_pay/callback_spec.rb",
      "spec/adaptive_pay/cancel_preapproval_request_spec.rb",
      "spec/adaptive_pay/interface_spec.rb",
+     "spec/adaptive_pay/parser_spec.rb",
      "spec/adaptive_pay/payment_request_spec.rb",
      "spec/adaptive_pay/preapproval_request_spec.rb",
      "spec/adaptive_pay/recipient_spec.rb",

@@ -6,12 +6,12 @@ require 'rake/rdoctask'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gemspec|
-    gemspec.name = "adaptive_pay"
+    gemspec.name = "elucid-adaptive_pay"
     gemspec.summary = "Wrapper around the Paypal Adaptive Payments API"
     gemspec.description = "Wrapper around the Paypal Adaptive Payments API"
-    gemspec.email = "ich@derfred.com"
-    gemspec.homepage = "http://github.com/derfred/adaptive_pay"
-    gemspec.authors = ["Frederik Fix"]
+    gemspec.email = %q{elucid@gmail.com}
+    gemspec.homepage = "http://github.com/elucid/adaptive_pay"
+    gemspec.authors = ["Frederik Fix", "Justin Giancola"]
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
