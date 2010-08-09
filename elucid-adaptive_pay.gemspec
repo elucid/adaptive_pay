@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{elucid-adaptive_pay}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Frederik Fix", "Justin Giancola"]
-  s.date = %q{2010-08-05}
+  s.date = %q{2010-08-09}
   s.description = %q{Wrapper around the Paypal Adaptive Payments API}
   s.email = %q{elucid@gmail.com}
   s.extra_rdoc_files = [

@@ -74,7 +74,9 @@ module AdaptivePay
         # the optional second param to URI.escape defaults to URI::UNSAFE
         # which doesn't match '&' as it is a valid URI character.
         # however, '&' is not a valid character within NVP values.
-        escaped_v = URI.escape(v.to_s, /[^-_.!~*'()a-zA-Z\d;\/?:@+$#,\[\]]/n)
+        # additionally, PayPal interprets '+' as ' ' (similar to
+        # application/x-www-form-urlencoded) so it must be escaped also.
+        escaped_v = URI.escape(v.to_s, /[^-_.!~*'()a-zA-Z\d;\/?:@$#,\[\]]/n)
         result << "#{k}=#{escaped_v}"
       end
       result.join("&")
